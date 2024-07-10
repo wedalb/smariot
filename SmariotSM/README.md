@@ -37,7 +37,7 @@ SMARIOT is a smart mirror software designed to integrate with Home Assistant and
 1. **Clone the Repository**:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/wedalb/smariot.git
    cd SmariotSM
    ```
 2. **Create a Virtual Environment:**
