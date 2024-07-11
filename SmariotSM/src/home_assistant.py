@@ -1,7 +1,7 @@
 import json
 import requests
 from websocket import WebSocketApp
-from config import HOME_ASSISTANT_ACCESS_TOKEN, HOME_ASSISTANT_BASE_URL
+from config_constants import HOME_ASSISTANT_ACCESS_TOKEN, HOME_ASSISTANT_BASE_URL
 
 class HomeAssistantWebSocket:
     def __init__(self, base_url, token):

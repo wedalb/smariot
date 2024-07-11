@@ -7,8 +7,8 @@ from datetime import datetime
 import cv2
 import numpy as np
 
-from services.video_player import VideoPlayer
-from services.weather_api import WeatherHandler
+from video_player import VideoPlayer
+from weather_api import WeatherHandler
 
 # Logger for this module
 logger = logging.getLogger(__name__)

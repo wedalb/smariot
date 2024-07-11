@@ -78,26 +78,25 @@ python ui/main_screen.py
 SmariotSM/
 ├── assets/
 ├── config/
-├── services/
+|   ├──logging_config.py
+├── src/
 │   ├── assistant.py
 │   ├── home_assistant.py
 │   ├── video_player.py
 │   ├── weather_api.py
 │   └── webcam.jpg
-├── ui/
 │   └── main_screen.py
 ├── venv/
 ├── .env
-├── config.py
+├── config_constants.py
 ├── README.md
 ├── requirements.txt
 ```
 - assets/: Directory for static assets such as images and videos and the animations.
 - config/: Configuration file for logging
-- services/: Core services including the assistant, Home Assistant integration, video player, and weather API.
-- ui/: User interface components, primarily the main screen.
+- src/: Core services including the assistant, Home Assistant integration, video player, and weather API.
 - venv/: Virtual environment directory.
 - .env: Environment variables file.
-- config.py: Configuration script that contains constants
+- config_constants.py: Configuration script that contains constants
 - README.md: Project documentation.
 - requirements.txt: Python dependencies.

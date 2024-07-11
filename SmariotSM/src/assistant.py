@@ -1,9 +1,9 @@
 import pytz
 from datetime import datetime
 from groq import Groq
-from config import GROQ_API_KEY, DEFAULT_LOCATION, GENAI_API_KEY, \
+from config_constants import GROQ_API_KEY, DEFAULT_LOCATION, GENAI_API_KEY, \
     GOOGLE_PLACES_API_KEY, MUNICH_LAT, MUNICH_LON, OPENAI_API_KEY
-from services.weather_api import WeatherHandler, get_current_gps_coordinates
+from weather_api import WeatherHandler, get_current_gps_coordinates
 from PIL import ImageGrab, Image
 from openai import OpenAI
 import pyaudio

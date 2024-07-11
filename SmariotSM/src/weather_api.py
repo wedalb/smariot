@@ -1,5 +1,5 @@
 import requests
-from config import MUNICH_LAT, MUNICH_LON, WEATHER_API_KEY, GOOGLE_PLACES_API_KEY
+from config_constants import MUNICH_LAT, MUNICH_LON, WEATHER_API_KEY, GOOGLE_PLACES_API_KEY
 import logging
 
 logger = logging.getLogger(__name__)
