@@ -1,8 +1,11 @@
 import multiprocessing
+import threading
 import tkinter as tk
 from tkinter import messagebox
 import logging
 from datetime import datetime
+import cv2
+import numpy as np
 
 from services.video_player import VideoPlayer
 from services.weather_api import WeatherHandler
@@ -28,20 +31,87 @@ def run_start_listening():
     from services.assistant import start_listening
     start_listening()
 
-def start_process():
-    global listening_process
-    listening_process = multiprocessing.Process(target=run_start_listening)
-    listening_process.start()
-    messagebox.showinfo("Started Listening", "Listening process started")
+def detect_waving(waving_detected):
+    cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        print("Error: Could not open video stream.")
+        return
 
-def stop_process():
-    global listening_process
+    background_subtractor = cv2.createBackgroundSubtractorMOG2(history=100, varThreshold=50, detectShadows=True)
+    hand_positions = []
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        # Apply background subtractor
+        fg_mask = background_subtractor.apply(frame)
+        # Find contours
+        contours, _ = cv2.findContours(fg_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        for contour in contours:
+            if cv2.contourArea(contour) < 5000:
+                continue
+
+            # Get bounding box
+            x, y, w, h = cv2.boundingRect(contour)
+            if h > w:  # Likely a hand
+                hand_positions.append((x + w // 2, y + h // 2))
+                if len(hand_positions) > 20:
+                    hand_positions.pop(0)
+                    if is_waving(hand_positions):
+                        print("Waving detected!")
+                        waving_detected.value = 1
+                        hand_positions.clear()
+
+        # Add a delay to prevent high CPU usage
+        cv2.waitKey(30)
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+def is_waving(hand_positions):
+    if len(hand_positions) < 20:
+        return False
+
+    movements = [hand_positions[i + 1][0] - hand_positions[i][0] for i in range(len(hand_positions) - 1)]
+    positive_movements = [m for m in movements if m > 0]
+    negative_movements = [m for m in movements if m < 0]
+
+    return len(positive_movements) > 5 and len(negative_movements) > 5
+
+def start_processes(waving_detected):
+    global listening_process, waving_process
+    listening_process = multiprocessing.Process(target=run_start_listening)
+    waving_process = multiprocessing.Process(target=detect_waving, args=(waving_detected,))
+    listening_process.start()
+    waving_process.start()
+    messagebox.showinfo("Processes Started", "Listening and waving detection processes started")
+
+def stop_processes():
+    global listening_process, waving_process
     if listening_process.is_alive():
         listening_process.terminate()
         listening_process.join()
-        messagebox.showinfo("Stopped Listening", "Listening process stopped")
+    if waving_process.is_alive():
+        waving_process.terminate()
+        waving_process.join()
+    messagebox.showinfo("Processes Stopped", "Listening and waving detection processes stopped")
+
+def check_waving(label, waving_detected):
+    if waving_detected.value == 1:
+        label.config(text="Hi! :)")
+        root.after(5000, reset_label, label, waving_detected)  # Reset label after 5 seconds
+    root.after(100, check_waving, label, waving_detected)
+
+def reset_label(label, waving_detected):
+    label.config(text="Guten Tag")
+    waving_detected.value = 0
 
 if __name__ == "__main__":
+    waving_detected = multiprocessing.Value('i', 0)
+
     # Create the main application window
     root = tk.Tk()
     root.title("SMARIOT")
@@ -91,7 +161,10 @@ if __name__ == "__main__":
     # Update weather information display
     update_weather_display(weather_handler, weather_label, video_player)
 
-    start_process()
+    start_processes(waving_detected)
+
+    # Check for waving detection periodically
+    root.after(100, check_waving, label, waving_detected)
 
     # Toggle fullscreen on Escape key press
     def toggle_fullscreen(event):
@@ -107,3 +180,4 @@ if __name__ == "__main__":
     # Run the application
     root.mainloop()
     logger.info("Application closed")
+    stop_processes()
