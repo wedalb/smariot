@@ -1,0 +1,39 @@
+{
+  "name": "MapboxVisionSafety",
+  "version": "0.14.0",
+  "summary": "Safety features on top of Vision",
+  "description": "Safety features on top of Vision",
+  "homepage": "https://www.mapbox.com/vision/",
+  "documentation_url": "https://www.mapbox.com/vision/",
+  "license": {
+    "type": "CUSTOM",
+    "file": "Docs/LICENSE.md"
+  },
+  "authors": {
+    "Mapbox": "mobile@mapbox.com"
+  },
+  "social_media_url": "https://twitter.com/mapbox",
+  "platforms": {
+    "ios": "11.2"
+  },
+  "source": {
+    "git": "https://github.com/mapbox/mapbox-vision-ios.git",
+    "tag": "v0.14.0"
+  },
+  "source_files": "MapboxVisionSafety/**/*.{swift,h,metal}",
+  "requires_arc": true,
+  "swift_versions": "4.2",
+  "dependencies": {
+    "MapboxVisionNativeAll/Safety": [
+      "0.14.0"
+    ],
+    "MapboxVision": [
+      "0.14.0"
+    ]
+  },
+  "pod_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "$(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT)__XCODE_$(XCODE_VERSION_MAJOR))",
+    "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64__XCODE_1200": "arm64 arm64e armv7 armv7s armv6 armv8"
+  },
+  "swift_version": "4.2"
+}

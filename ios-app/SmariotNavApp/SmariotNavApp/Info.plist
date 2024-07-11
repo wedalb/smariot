@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoiZ2U1N3JldiIsImEiOiJjbHYyczRqdXEwMG1xMmptZjl2dWhqMDRrIn0.fIHtG7SmmM73M7g6_cJ8kQ</string>
+	<key>NSLocationWhenInUsageDescription</key>
+	<string>&quot;Need permission&quot;</string>
+	<key>NSCameraUsageDescription</key>
+	<string>&quot;need&quot;</string>
+</dict>
+</plist>

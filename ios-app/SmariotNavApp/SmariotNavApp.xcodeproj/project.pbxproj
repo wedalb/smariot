@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		370A2280B7372612B095A224 /* Pods_SmariotNavApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C79C4AD87DBC28DC087CA06 /* Pods_SmariotNavApp.framework */; };
+		4255B96D2C062FCA008B875C /* ARContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255B96C2C062FCA008B875C /* ARContentView.swift */; };
+		4255B9892C063161008B875C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255B9882C063161008B875C /* MainView.swift */; };
+		4255B98B2C063198008B875C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255B98A2C063198008B875C /* SettingsView.swift */; };
+		428F8A682BE312BC008571F5 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F8A672BE312BC008571F5 /* RouteView.swift */; };
+		42B31F302C080F5800617D1A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B31F2F2C080F5800617D1A /* MapView.swift */; };
+		42B31F322C08140300617D1A /* Map2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B31F312C08140300617D1A /* Map2View.swift */; };
+		42DA12902BD8581200BFB124 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA128F2BD8581200BFB124 /* AppDelegate.swift */; };
+		42DA12922BD8581200BFB124 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA12912BD8581200BFB124 /* TestView.swift */; };
+		42DA12942BD8581300BFB124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DA12932BD8581300BFB124 /* Assets.xcassets */; };
+		42DA12972BD8581300BFB124 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DA12962BD8581300BFB124 /* Preview Assets.xcassets */; };
+		42DA12A02BD8662C00BFB124 /* awo-seniorentreffs.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 42DA129F2BD8662C00BFB124 /* awo-seniorentreffs.geojson */; };
+		42F524CF2C1E820D00A98B4C /* SmariotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F524CE2C1E820D00A98B4C /* SmariotView.swift */; };
+		42F524D22C1E82B300A98B4C /* SplineRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 42F524D12C1E82B300A98B4C /* SplineRuntime */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3C79C4AD87DBC28DC087CA06 /* Pods_SmariotNavApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmariotNavApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4255B96C2C062FCA008B875C /* ARContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentView.swift; sourceTree = "<group>"; };
+		4255B9882C063161008B875C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4255B98A2C063198008B875C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		428F8A672BE312BC008571F5 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
+		42B31F2F2C080F5800617D1A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		42B31F312C08140300617D1A /* Map2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2View.swift; sourceTree = "<group>"; };
+		42DA128C2BD8581100BFB124 /* SmariotNavApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmariotNavApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42DA128F2BD8581200BFB124 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42DA12912BD8581200BFB124 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		42DA12932BD8581300BFB124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42DA12962BD8581300BFB124 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		42DA129D2BD8593800BFB124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DA129F2BD8662C00BFB124 /* awo-seniorentreffs.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "awo-seniorentreffs.geojson"; sourceTree = "<group>"; };
+		42F524CE2C1E820D00A98B4C /* SmariotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmariotView.swift; sourceTree = "<group>"; };
+		7B17814964D3C5BFB5419605 /* Pods-SmariotNavApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmariotNavApp.release.xcconfig"; path = "Target Support Files/Pods-SmariotNavApp/Pods-SmariotNavApp.release.xcconfig"; sourceTree = "<group>"; };
+		89AB9D89DF7F12E4033B5B54 /* Pods-SmariotNavApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmariotNavApp.debug.xcconfig"; path = "Target Support Files/Pods-SmariotNavApp/Pods-SmariotNavApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42DA12892BD8581100BFB124 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F524D22C1E82B300A98B4C /* SplineRuntime in Frameworks */,
+				370A2280B7372612B095A224 /* Pods_SmariotNavApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EB9550CB03D1878B4993E11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C79C4AD87DBC28DC087CA06 /* Pods_SmariotNavApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4255B98C2C063353008B875C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4255B98F2C0634AF008B875C /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				4255B96C2C062FCA008B875C /* ARContentView.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		4255B9902C0634BA008B875C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4255B98A2C063198008B875C /* SettingsView.swift */,
+				428F8A672BE312BC008571F5 /* RouteView.swift */,
+				42B31F2F2C080F5800617D1A /* MapView.swift */,
+				42B31F312C08140300617D1A /* Map2View.swift */,
+				42F524CE2C1E820D00A98B4C /* SmariotView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4255B9912C0634C7008B875C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				42DA128F2BD8581200BFB124 /* AppDelegate.swift */,
+				4255B9882C063161008B875C /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		42DA12832BD8581100BFB124 = {
+			isa = PBXGroup;
+			children = (
+				42DA128E2BD8581100BFB124 /* SmariotNavApp */,
+				42DA12932BD8581300BFB124 /* Assets.xcassets */,
+				42DA128D2BD8581100BFB124 /* Products */,
+				F63AAB242EB2E2415FDCF26D /* Pods */,
+				1EB9550CB03D1878B4993E11 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		42DA128D2BD8581100BFB124 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42DA128C2BD8581100BFB124 /* SmariotNavApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42DA128E2BD8581100BFB124 /* SmariotNavApp */ = {
+			isa = PBXGroup;
+			children = (
+				42DA129D2BD8593800BFB124 /* Info.plist */,
+				4255B9912C0634C7008B875C /* Main */,
+				4255B9902C0634BA008B875C /* Views */,
+				4255B98F2C0634AF008B875C /* AR */,
+				4255B98C2C063353008B875C /* Model */,
+				42DA129E2BD8662400BFB124 /* Geoassets */,
+				42DA12952BD8581300BFB124 /* Preview Content */,
+			);
+			path = SmariotNavApp;
+			sourceTree = "<group>";
+		};
+		42DA12952BD8581300BFB124 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				42DA12962BD8581300BFB124 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		42DA129E2BD8662400BFB124 /* Geoassets */ = {
+			isa = PBXGroup;
+			children = (
+				42DA12912BD8581200BFB124 /* TestView.swift */,
+				42DA129F2BD8662C00BFB124 /* awo-seniorentreffs.geojson */,
+			);
+			path = Geoassets;
+			sourceTree = "<group>";
+		};
+		F63AAB242EB2E2415FDCF26D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				89AB9D89DF7F12E4033B5B54 /* Pods-SmariotNavApp.debug.xcconfig */,
+				7B17814964D3C5BFB5419605 /* Pods-SmariotNavApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42DA128B2BD8581100BFB124 /* SmariotNavApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42DA129A2BD8581300BFB124 /* Build configuration list for PBXNativeTarget "SmariotNavApp" */;
+			buildPhases = (
+				8287B3592539308EBAD9CCEE /* [CP] Check Pods Manifest.lock */,
+				42DA12882BD8581100BFB124 /* Sources */,
+				42DA12892BD8581100BFB124 /* Frameworks */,
+				42DA128A2BD8581100BFB124 /* Resources */,
+				08915E5D24004E719EF8E3F9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmariotNavApp;
+			packageProductDependencies = (
+				42F524D12C1E82B300A98B4C /* SplineRuntime */,
+			);
+			productName = SmariotNavApp;
+			productReference = 42DA128C2BD8581100BFB124 /* SmariotNavApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42DA12842BD8581100BFB124 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					42DA128B2BD8581100BFB124 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 42DA12872BD8581100BFB124 /* Build configuration list for PBXProject "SmariotNavApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42DA12832BD8581100BFB124;
+			packageReferences = (
+				42F524D02C1E82B300A98B4C /* XCRemoteSwiftPackageReference "spline-ios" */,
+			);
+			productRefGroup = 42DA128D2BD8581100BFB124 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42DA128B2BD8581100BFB124 /* SmariotNavApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42DA128A2BD8581100BFB124 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42DA12972BD8581300BFB124 /* Preview Assets.xcassets in Resources */,
+				42DA12942BD8581300BFB124 /* Assets.xcassets in Resources */,
+				42DA12A02BD8662C00BFB124 /* awo-seniorentreffs.geojson in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08915E5D24004E719EF8E3F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmariotNavApp/Pods-SmariotNavApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmariotNavApp/Pods-SmariotNavApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmariotNavApp/Pods-SmariotNavApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8287B3592539308EBAD9CCEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmariotNavApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42DA12882BD8581100BFB124 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42B31F302C080F5800617D1A /* MapView.swift in Sources */,
+				428F8A682BE312BC008571F5 /* RouteView.swift in Sources */,
+				42DA12922BD8581200BFB124 /* TestView.swift in Sources */,
+				4255B96D2C062FCA008B875C /* ARContentView.swift in Sources */,
+				42B31F322C08140300617D1A /* Map2View.swift in Sources */,
+				4255B98B2C063198008B875C /* SettingsView.swift in Sources */,
+				4255B9892C063161008B875C /* MainView.swift in Sources */,
+				42F524CF2C1E820D00A98B4C /* SmariotView.swift in Sources */,
+				42DA12902BD8581200BFB124 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		42DA12982BD8581300BFB124 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		42DA12992BD8581300BFB124 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		42DA129B2BD8581300BFB124 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89AB9D89DF7F12E4033B5B54 /* Pods-SmariotNavApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SmariotNavApp/Preview Content\"";
+				DEVELOPMENT_TEAM = SR29XA88VK;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmariotNavApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Smariot;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "\"let me use\"";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "\"Need permission for location\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Display for Map\"";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.heidialbarazi.SmariotNavApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		42DA129C2BD8581300BFB124 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B17814964D3C5BFB5419605 /* Pods-SmariotNavApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SmariotNavApp/Preview Content\"";
+				DEVELOPMENT_TEAM = SR29XA88VK;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmariotNavApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Smariot;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "\"let me use\"";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "\"Need permission for location\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Display for Map\"";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.heidialbarazi.SmariotNavApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42DA12872BD8581100BFB124 /* Build configuration list for PBXProject "SmariotNavApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42DA12982BD8581300BFB124 /* Debug */,
+				42DA12992BD8581300BFB124 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42DA129A2BD8581300BFB124 /* Build configuration list for PBXNativeTarget "SmariotNavApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42DA129B2BD8581300BFB124 /* Debug */,
+				42DA129C2BD8581300BFB124 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		42F524D02C1E82B300A98B4C /* XCRemoteSwiftPackageReference "spline-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/splinetool/spline-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		42F524D12C1E82B300A98B4C /* SplineRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42F524D02C1E82B300A98B4C /* XCRemoteSwiftPackageReference "spline-ios" */;
+			productName = SplineRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 42DA12842BD8581100BFB124 /* Project object */;
+}

@@ -1,0 +1,196 @@
+import AVFoundation
+import Foundation
+import MapboxVisionNative
+
+private let imageOutputFormat = Image.Format.BGRA
+
+/**
+ Object encapsulating work with camera device.
+ */
+open class CameraVideoSource: ObservableVideoSource {
+    /// Capture session utilized by camera.
+    public let cameraSession: AVCaptureSession
+
+    /**
+     Create camera video source.
+
+     - Parameter preset: Preset for camera session.
+     */
+    public init(preset: AVCaptureSession.Preset = .iFrame960x540) {
+        cameraSession = AVCaptureSession()
+
+        super.init()
+
+        isExternal = false
+
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        configureSession(captureDevice: captureDevice, preset: preset)
+
+        set(orientation: UIApplication.shared.statusBarOrientation.deviceOrientation)
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged),
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+
+    /**
+     Start running camera video source.
+     */
+    public func start() {
+        guard !cameraSession.isRunning else { return }
+        cameraSession.startRunning()
+    }
+
+    /**
+     Stop running camera video source.
+     */
+    public func stop() {
+        guard cameraSession.isRunning else { return }
+        cameraSession.stopRunning()
+    }
+
+    // MARK: - Private
+
+    private var dataOutput: AVCaptureVideoDataOutput?
+
+    private var captureDeviceInput: AVCaptureDeviceInput? {
+        return cameraSession.inputs.first { $0 is AVCaptureDeviceInput } as? AVCaptureDeviceInput
+    }
+
+    private func configureSession(captureDevice: AVCaptureDevice, preset: AVCaptureSession.Preset) {
+        guard let deviceInput = try? AVCaptureDeviceInput(device: captureDevice) else { return }
+
+        cameraSession.beginConfiguration()
+
+        cameraSession.sessionPreset = preset
+
+        if cameraSession.canAddInput(deviceInput) {
+            cameraSession.addInput(deviceInput)
+        }
+
+        let dataOutput = AVCaptureVideoDataOutput()
+        dataOutput.videoSettings = [
+            String(kCVPixelBufferPixelFormatTypeKey): NSNumber(value: imageOutputFormat.pixelFormatType),
+        ]
+        dataOutput.alwaysDiscardsLateVideoFrames = true
+
+        if cameraSession.canAddOutput(dataOutput) {
+            cameraSession.addOutput(dataOutput)
+        }
+
+        cameraSession.commitConfiguration()
+
+        let queue = DispatchQueue(label: "com.mapbox.videoQueue")
+        dataOutput.setSampleBufferDelegate(self, queue: queue)
+
+        self.dataOutput = dataOutput
+        enableCameraIntrinsicMatrixDelivery()
+    }
+
+    private func getCameraParameters(sampleBuffer: CMSampleBuffer) -> CameraParameters? {
+        guard let pixelBuffer = sampleBuffer.pixelBuffer else { return nil }
+
+        let width = pixelBuffer.width
+        let height = pixelBuffer.height
+
+        let focalPixelX: Float
+        let focalPixelY: Float
+
+        if let attachment = CMGetAttachment(sampleBuffer, key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, attachmentModeOut: nil) as? Data {
+            let matrix: matrix_float3x3 = attachment.withUnsafeBytes { $0.pointee }
+            focalPixelX = matrix[0, 0]
+            focalPixelY = matrix[1, 1]
+        } else {
+            enableCameraIntrinsicMatrixDelivery()
+
+            if let fov = formatFieldOfView {
+                let pixel = CameraVideoSource.focalPixel(fov: fov, dimension: width)
+                focalPixelX = pixel
+                focalPixelY = pixel
+            } else {
+                focalPixelX = -1
+                focalPixelY = -1
+            }
+        }
+
+        return CameraParameters(width: width, height: height, focalXPixels: focalPixelX, focalYPixels: focalPixelY)
+    }
+
+    private var formatFieldOfView: Float? {
+        guard let fov = captureDeviceInput?.device.activeFormat.videoFieldOfView else { return nil }
+        return fov > 0 ? fov : nil
+    }
+
+    private static func focalPixel(fov: Float, dimension: Int) -> Float {
+        let measurement = Measurement(value: Double(fov), unit: UnitAngle.degrees)
+        return (Float(dimension) / 2) / tan(Float(measurement.converted(to: .radians).value) / 2)
+    }
+
+    private func set(orientation: UIDeviceOrientation) {
+        dataOutput?.connection(with: .video)?.set(deviceOrientation: orientation)
+    }
+
+    private func enableCameraIntrinsicMatrixDelivery() {
+        guard let connection = dataOutput?.connection(with: .video),
+            connection.isCameraIntrinsicMatrixDeliverySupported,
+            !connection.isCameraIntrinsicMatrixDeliveryEnabled
+        else { return }
+
+        connection.isCameraIntrinsicMatrixDeliveryEnabled = true
+    }
+
+    // MARK: - Observations
+
+    @objc
+    private func orientationChanged() {
+        set(orientation: UIDevice.current.orientation)
+    }
+}
+
+/// :nodoc:
+extension CameraVideoSource: AVCaptureVideoDataOutputSampleBufferDelegate {
+    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        notify { observer in
+            let sample = VideoSample(buffer: sampleBuffer, format: imageOutputFormat)
+            observer.videoSource(self, didOutput: sample)
+
+            if let cameraParameters = getCameraParameters(sampleBuffer: sampleBuffer) {
+                observer.videoSource(self, didOutput: cameraParameters)
+            }
+        }
+    }
+}
+
+extension UIInterfaceOrientation {
+    var deviceOrientation: UIDeviceOrientation {
+        switch self {
+        case .unknown:
+            return .unknown
+        case .portrait:
+            return .portrait
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+        case .landscapeLeft:
+            return .landscapeRight
+        case .landscapeRight:
+            return .landscapeLeft
+        }
+    }
+}
+
+private extension Image.Format {
+    var pixelFormatType: OSType {
+        switch self {
+        case .unknown:
+            return 0
+        case .RGBA:
+            return kCVPixelFormatType_32RGBA
+        case .BGRA:
+            return kCVPixelFormatType_32BGRA
+        case .RGB:
+            return kCVPixelFormatType_24RGB
+        case .BGR:
+            return kCVPixelFormatType_24BGR
+        case .grayscale8:
+            return kCVPixelFormatType_8Indexed
+        }
+    }
+}
