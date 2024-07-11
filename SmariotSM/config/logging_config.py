@@ -1,3 +1,10 @@
+"""
+
+This script sets up a logging configuration using Python's built-in `logging` module.
+It defines the logging level, format, date format, and specifies handlers to direct log messages to
+both a file and the console.
+
+"""
 import logging
 
 # Configure the logging

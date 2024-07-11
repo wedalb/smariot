@@ -14,6 +14,17 @@ from weather_api import WeatherHandler
 logger = logging.getLogger(__name__)
 
 def update_weather_display(weather_handler, weather_label, video_player):
+    """
+        Updates the weather display with the current weather information and video.
+
+        Parameters:
+        weather_handler (WeatherHandler): An instance of the WeatherHandler class.
+        weather_label (tk.Label): The Tkinter label to update with weather information.
+        video_player (VideoPlayer): The video player instance to update the video.
+
+        Usage:
+        update_weather_display(weather_handler, weather_label, video_player)
+        """
     if weather_handler.condition and weather_handler.temp and weather_handler.group and weather_handler.icon_url:
         weather_info = f"Aktuelles Wetter: {weather_handler.condition}, {weather_handler.temp}°C"
     else:
@@ -23,15 +34,39 @@ def update_weather_display(weather_handler, weather_label, video_player):
     video_player.update_video(weather_handler.current_video)
 
 def update_clock(clock_label):
+    """
+        Updates the clock label with the current time.
+
+        Parameters:
+        clock_label (tk.Label): The Tkinter label to update with the current time.
+
+        Usage:
+        update_clock(clock_label)
+        """
     now = datetime.now().strftime("%H:%M:%S")
     clock_label.config(text=now)
     clock_label.after(1000, update_clock, clock_label)
 
 def run_start_listening():
-    from services.assistant import start_listening
+    """
+        Starts the listening process for the assistant service.
+
+        Usage:
+        run_start_listening()
+        """
+    from assistant import start_listening
     start_listening()
 
 def detect_waving(waving_detected):
+    """
+        Detects waving using the webcam and sets the waving_detected flag when waving is detected.
+
+        Parameters:
+        waving_detected (multiprocessing.Value): A multiprocessing value to indicate waving detection.
+
+        Usage:
+        detect_waving(waving_detected)
+        """
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Could not open video stream.")
@@ -72,6 +107,18 @@ def detect_waving(waving_detected):
     cv2.destroyAllWindows()
 
 def is_waving(hand_positions):
+    """
+       Determines if the hand is waving based on the positions of the hand.
+
+       Parameters:
+       hand_positions (list): A list of hand positions.
+
+       Returns:
+       bool: True if waving is detected, False otherwise.
+
+       Usage:
+       is_waving(hand_positions)
+       """
     if len(hand_positions) < 20:
         return False
 
@@ -82,14 +129,28 @@ def is_waving(hand_positions):
     return len(positive_movements) > 5 and len(negative_movements) > 5
 
 def start_processes(waving_detected):
+    """
+        Starts the listening and waving detection processes.
+
+        Parameters:
+        waving_detected (multiprocessing.Value): A multiprocessing value to indicate waving detection.
+
+        Usage:
+        start_processes(waving_detected)
+        """
     global listening_process, waving_process
     listening_process = multiprocessing.Process(target=run_start_listening)
     waving_process = multiprocessing.Process(target=detect_waving, args=(waving_detected,))
     listening_process.start()
     waving_process.start()
-    messagebox.showinfo("Processes Started", "Listening and waving detection processes started")
-
+    logger.info("Started listening")
 def stop_processes():
+    """
+        Stops the listening and waving detection processes.
+
+        Usage:
+        stop_processes()
+        """
     global listening_process, waving_process
     if listening_process.is_alive():
         listening_process.terminate()
@@ -97,15 +158,35 @@ def stop_processes():
     if waving_process.is_alive():
         waving_process.terminate()
         waving_process.join()
-    messagebox.showinfo("Processes Stopped", "Listening and waving detection processes stopped")
-
+    logger.info("Stopped listening")
 def check_waving(label, waving_detected):
+    """
+    Checks for waving detection and updates the label accordingly.
+
+    Parameters:
+    label (tk.Label): The Tkinter label to update when waving is detected.
+    waving_detected (multiprocessing.Value): A multiprocessing value to indicate waving detection.
+
+    Usage:
+    check_waving(label, waving_detected)
+    """
+
     if waving_detected.value == 1:
         label.config(text="Hi! :)")
         root.after(5000, reset_label, label, waving_detected)  # Reset label after 5 seconds
     root.after(100, check_waving, label, waving_detected)
 
 def reset_label(label, waving_detected):
+    """
+        Resets the label to its default text and clears the waving_detected flag.
+
+        Parameters:
+        label (tk.Label): The Tkinter label to reset.
+        waving_detected (multiprocessing.Value): A multiprocessing value to indicate waving detection.
+
+        Usage:
+        reset_label(label, waving_detected)
+        """
     label.config(text="Guten Tag")
     waving_detected.value = 0
 
